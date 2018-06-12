@@ -1,11 +1,3 @@
-/**
- * @(#)Fatura.java
- *
- *
- * @author Diego Vilella Rodrigues
- * @version 1.00 2015/10/29
- */
-
 import java.util.Calendar;
 public class Fatura {
 	private int faturald;
