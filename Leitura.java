@@ -1,11 +1,3 @@
-/**
- * @(#)Leitura.java
- *
- *
- * @author Diego Vilella Rodrigues
- * @version 1.00 2015/10/6
- */
-
 import java.io.*;
 
 public class Leitura {
