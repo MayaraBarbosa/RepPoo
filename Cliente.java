@@ -1,13 +1,20 @@
-public Cliente{
-	private int clienteid;
+import java.util.Scanner;
+
+public class Cliente{
+	private int clienteId;
 	private String cpf;
 	private String nome;
 	private Endereco endereco;
 
-	public Cliente(String cpf, int clienteid,String nome) {
+	public Cliente(){
+
+	}
+	
+	public Cliente(int clienteid, String cpf, String nome, Endereco endereco) {
 		this.cpf = cpf;
-		this.clienteid = clienteid;
+		clienteId = clienteid;
 		this.nome = nome;
+		this.endereco = endereco;
 	}
 
 	public void setNome(String nome) {
@@ -18,23 +25,23 @@ public Cliente{
 		return this.nome;
 	}
 	
-	public void setclienteid(int clienteid) {
-		this.clienteid = clienteid;
+	public void setClienteId(int clienteid) {
+		clienteId = clienteid;
 	}
 	
-	public int getclienteid() {
-		return this.clienteid;
+	public int getClienteId() {
+		return clienteId;
 	}
 
-	public void setcpf(String cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 	
-	public String getcpf() {
+	public String getCpf() {
 		return this.cpf;
 	}
 
-	public void setendereco(Endereco endereco) {
+	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
 	
@@ -43,14 +50,24 @@ public Cliente{
 	}
 	
 	public String toString() {
-		String aux = this.nome + " | " + this.cpf + " | ";
-		aux += this.endereco + " | " + this.clienteid + "\n";
-		return "Pessoa.: " + aux;
+		String aux = "";
+		aux +=  this.clienteId + " | " + this.nome + " | " + this.cpf + " | ";
+		aux += endereco.toString() + " | " + "\n";
+		return aux;
 	}
 
-	public Cliente criar(int clienteid, String cpf, String nome, Endereco endereco){
-		String aux = this.nome + " | " + this.cpf + " | ";
-		aux += this.endereco + " | " + this.clienteid + "\n";
-		System.out.println(aux);
+	public static Cliente criar(){
+		String cpf,nome;
+		int id;
+		Leitura input = new Leitura();
+		
+		System.out.print("Digite o ID: ");
+		id = input.lerInt();
+		System.out.print("Digite o cpf: ");
+		cpf = input.lerString();
+		System.out.print("Digite o nome: ");
+		nome = input.lerString();
+	
+		return new Cliente(id,cpf,nome,Endereco.criar());
 	}
 }

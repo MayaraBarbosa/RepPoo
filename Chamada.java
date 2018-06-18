@@ -35,6 +35,10 @@ public class Chamada {
 		this.horario = horario;
 	}
 	
+	public Calendar getHorario(){
+		return horario;
+	}
+	
 	public void setDestinatario(LinhaTelefonica d){
 		this.destinatario = d;
 	}
@@ -53,7 +57,7 @@ public class Chamada {
 	
 	public String toString(){
 		String aux = "";
-		aux += "ID: " + transmissaold + "\nHorario: " + horario + "\nDestinatario: " + destinatario;
+		aux += "ID: " + transmissaold + "\nHorario: " + horario.getTime() + "\nDestinatario: " + destinatario;
 		aux += "\ncusto: " + custo;
 		return aux;
 	}	

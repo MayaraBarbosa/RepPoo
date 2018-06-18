@@ -27,7 +27,7 @@ public class Texto extends Chamada{
     
    	public String toString(){
 	   	String aux = "";
-	   	aux+= super.toString() + "\nConteudo: " + conteudo;
+	   	aux += super.toString() + "\nConteudo: " + conteudo;
 	   	return aux; 
    	}
     

@@ -1,3 +1,12 @@
+/**
+ * @(#)Endereco.java
+ *
+ *
+ * @author 
+ * @version 1.00 2018/6/17
+ */
+ 
+import java.util.Scanner;
 
 public class Endereco {
 	// atributos
@@ -8,13 +17,17 @@ public class Endereco {
 	private String estado;
 	
 	// metodos
+	public Endereco(){
+	}
+	
 	public Endereco(String rua, int numero,String cep, String cidade, String estado) {
 		this.rua = rua;
 		this.numero = numero;
 		this.cep = cep;
 		this.cidade = cidade;
-		this.estado = estado
+		this.estado = estado;
 	}
+	
 	
 	public String getRua() {
 		return this.rua;
@@ -58,15 +71,27 @@ public class Endereco {
 	
 	public String toString() {
 		String aux = "";
-		aux += "rua " + this.rua + ", " + this.numero;
+		aux += "rua " + this.rua + ", n" + this.numero + " - cep " + this.cep;
 		aux += " - " + this.cidade + " - " + this.estado;
-		aux += " - " + this.cep; 
 		return aux;
 	}
 
-	public Endereco criar(int numero, String cep, String cidade, String estado, String rua){
-		String aux = this.numero + " | " + this.cep + " | ";
-		aux += this.cidade + " | " + this.estado + " | " + this.rua +  "\n";
-		System.out.println(aux);
+	public static Endereco criar(){	
+		String rua,cep,cidade,estado;
+		int numeroEnd;
+		Leitura input = new Leitura();
+		
+		System.out.print("Digite o nome da rua: ");
+		rua = input.lerString();
+		System.out.print("Digite o numero: ");
+		numeroEnd = input.lerInt();
+		System.out.print("Digite o cep: ");
+		cep = input.lerString();
+		System.out.print("Digite a cidade: ");
+		cidade = input.lerString();
+		System.out.print("Digite o estado: ");
+		estado = input.lerString();
+		
+		return new Endereco(rua,numeroEnd,cep,cidade,estado);
 	}
 }

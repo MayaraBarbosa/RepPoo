@@ -7,6 +7,7 @@
  */
 
 import java.util.Scanner;
+import java.util.Calendar;
 
 public class Utilitario {
 	
@@ -14,8 +15,8 @@ public class Utilitario {
 	
 	public static int comprimentoChamadaTexto = 144;
 	public static int vencimentoRecarga = 90;
-	public static float custoChamadaVoz;
-	public static float custoChamadaTexto;
+	public static float custoChamadaVoz = 10;
+	public static float custoChamadaTexto = 15;
 	
     public Utilitario() {
     	System.out.print("Digite o custo da chamada de voz: ");
@@ -24,23 +25,33 @@ public class Utilitario {
     	custoChamadaTexto = input.nextFloat();    	
     }
     
-    public boolean recarregar(LinhaTelefonica linhas[], String numero, float valor){
+		public boolean recarregar(LinhaTelefonica linhas[], String numero, float valor){
+			String procura;
+			
+			for(int i = 0; i < 20; i++){
+				if(linhas[i] != null){
+					procura = linhas[i].getNumero();
+					if(procura.equals(numero)){
+						Calendar calendar;
+						Saldo s = ((Pre)linhas[i]).getSaldo();
+						calendar = s.getVencimento();
+						calendar.add(Calendar.DATE, Utilitario.vencimentoRecarga);
+						s.setValor(s.getValor() + valor);
+						s.setVencimento(calendar);
+						
+						((Pre)linhas[i]).setSaldo(s);
+						
+						return true;
+					}
+				}
+			}
     	
-    	int i = 0;
-    	
-   		while(linhas[i] != null){
-   			if (linhas[i].numero.equals(numero))
-   			{
-   				linhas[i].saldo.valor += valor;
-   				return true;
-   			}
-   		}
    		
-   		return false;
+			return false;
     	
     	
     	
-    }
+		}
     
 	
 	public String toString(){

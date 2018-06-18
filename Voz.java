@@ -27,7 +27,7 @@ public class Voz extends Chamada{
     
     public String toString(){
     	String aux = "";
-    	aux = super.toString() + "\nTermino: " + termino;
+    	aux += super.toString() + "\nTermino: " + termino;
     	return aux;
     }
 }
